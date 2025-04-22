@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SISTEMA_RRHH.UI</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SISTEMA_RRHH.UI.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <header>
+        @* Mostrar menú solo si está autenticado *@
+        @if (User.Identity.IsAuthenticated)
+        {
+            var departamentoID = User.FindFirst("DepartamentoID")?.Value;
+
+            <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #2c3e50;">
+                <div class="container-fluid px-4">
+                    <a class="navbar-brand fw-bold text-warning" style="font-size: 1.4rem;" asp-controller="ControladorMenu" asp-action="Index">
+                        <i class="fas fa-building me-2"></i>Estrella Matutina
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-between" id="mainNavbar">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-white fw-semibold" asp-controller="ControladorMenu" asp-action="Index">
+                                    <i class="fa-solid fa-house me-1"></i>Inicio
+                                </a>
+                            </li>
+
+                            @*  RRHH y Sistemas *@
+                            @if (departamentoID == "1" || departamentoID == "3")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white fw-semibold" asp-controller="ControladorFuncionarios" asp-action="Index">
+                                        <i class="fa-solid fa-users me-1"></i>Funcionarios
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white fw-semibold" asp-controller="ControladorMantenimientoImpuestos" asp-action="Indice">
+                                        <i class="fa-solid fa-screwdriver-wrench me-1"></i>Mantenimiento
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white fw-semibold" asp-controller="ControladorPlanilla" asp-action="Index">
+                                        <i class="fa-solid fa-calculator me-1"></i>Cálculo&nbsp;Planilla
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white fw-semibold" asp-controller="ControladorComprobante" asp-action="Index">
+                                        <i class="fa-solid fa-file-invoice-dollar me-1"></i>Mi&nbsp;Comprobante
+                                    </a>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white fw-semibold" asp-controller="ControladorAcercaDe" asp-action="Index">
+                                    <i class="fa-solid fa-circle-info me-1"></i>Acerca&nbsp;de
+                                </a>
+
+
+                            </li>
+
+                        </ul>
+
+
+                        <div class="d-flex align-items-center">
+                            <span class="text-white me-3 fw-semibold">@User.Identity.Name</span>
+                            <a class="btn btn-outline-light btn-sm" asp-controller="ControladorLogin" asp-action="CerrarSesion">
+                                <i class="fas fa-sign-out-alt me-1"></i> Salir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+        }
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="mt-5 py-4 text-light border-top" style="background-color: #2c3e50;">
+        <div class="d-flex justify-content-start align-items-start gap-5 ps-4">
+            <!-- Texto de desarrolladores -->
+            <div>
+                <h5 class="mb-3" style="letter-spacing: 1px;">Desarrollado por</h5>
+
+                <p class="mb-1 fs-5 d-flex align-items-center">
+                    <i class="fas fa-user text-info me-2"></i>
+                    <strong>Andrey Calderón</strong>
+                    <span class="text-muted ms-2">(305020589@cuc.cr)</span>
+                </p>
+
+                <p class="mb-2 fs-5 d-flex align-items-center">
+                    <i class="fas fa-user text-info me-2"></i>
+                    <strong>Sebastián Quirós</strong>
+                    <span class="text-muted ms-2">(305410721@cuc.cr)</span>
+                </p>
+
+                <div class="text-secondary small mt-3">
+                    &copy; 2025 - SISTEMA_RRHH.UI
+                </div>
+            </div>
+
+            <!-- Logo del CUC -->
+            <div>
+                <img src="~/imagenes/cuclogo.png" alt="CUC" style="height: 90px; transform: translateY(10px);" />
+
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+    <style>
+        .encabezado-logo {
+            background-color: #000;
+            border-bottom: 4px solid #00bcd4;
+        }
+
+            .encabezado-logo h1 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            .encabezado-logo .subtitulo {
+                font-size: 1.25rem;
+                color: #ccc;
+                margin-left: 2.25rem;
+            }
+    </style>
+</body>
+</html>

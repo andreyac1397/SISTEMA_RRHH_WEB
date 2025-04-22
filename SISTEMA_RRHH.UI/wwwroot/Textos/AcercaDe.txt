@@ -1,0 +1,18 @@
+﻿
+
+Sistema de Recursos Humanos - Estrella Matutina S.A.
+
+Este sistema fue desarrollado como proyecto final del curso TI-131 - Programación II,
+con el objetivo de automatizar el proceso de cálculo de la planilla mensual de la empresa,
+tomando en cuenta cargas sociales, créditos fiscales, tramos del impuesto sobre la renta, 
+horas laboradas y aportes de pensión complementaria.
+
+Curso: TI-131 - Programación II  
+Profesor: Róger Rodríguez López  
+Institución: Colegio Universitario de Cartago (CUC)  
+
+Desarrollado por:  
+- Andrey Calderón Vega  
+- Sebastean Quiros 
+
+Fecha de entrega: 21 de abril de 2025

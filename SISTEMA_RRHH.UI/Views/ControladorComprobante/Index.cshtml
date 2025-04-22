@@ -1,0 +1,50 @@
+﻿@model SISTEMA_RRHH.ENTIDADES.Planilla
+
+@{
+    ViewData["Title"] = "Mi Comprobante de Pago";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+        <label for="mes">Mes</label>
+        <select id="mes" name="mes" class="form-select">
+            @for (int m = 1; m <= 12; m++)
+            {
+                var nombre = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m);
+                <option value="@m" selected="@(m == ViewBag.MesActual ? "selected" : null)">@nombre</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="anno">Año</label>
+        <select id="anno" name="anno" class="form-select">
+            @for (int y = DateTime.Now.Year - 5; y <= DateTime.Now.Year + 1; y++)
+            {
+                <option value="@y" selected="@(y == ViewBag.AnnoActual ? "selected" : null)">@y</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </div>
+</form>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">@ViewBag.Mensaje</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <tr><th>Funcionario</th><td>@Model.NombreCompleto</td></tr>
+        <tr><th>Salario Base</th><td>@Model.SalarioBaseMensual.ToString("C")</td></tr>
+        <tr><th>Salario Bruto</th><td>@Model.SalarioBruto.ToString("C")</td></tr>
+        <tr><th>Aporte Pensión Complementaria</th><td>@Model.AportePensionComplementaria.ToString("C")</td></tr>
+        <tr><th>Cargas Sociales</th><td>@Model.TotalCargasSociales.ToString("C")</td></tr>
+        <tr><th>Créditos Fiscales</th><td>@Model.TotalCreditosFiscales.ToString("C")</td></tr>
+        <tr><th>Impuesto Renta</th><td>@Model.ImpuestoRenta.ToString("C")</td></tr>
+        <tr class="table-success"><th>Salario Neto</th><td><strong>@Model.SalarioNeto.ToString("C")</strong></td></tr>
+    </table>
+}

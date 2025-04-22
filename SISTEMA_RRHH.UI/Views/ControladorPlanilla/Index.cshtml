@@ -1,0 +1,108 @@
+﻿@using SISTEMA_RRHH.ENTIDADES
+@using SISTEMA_RRHH.DTO
+@model List<Planilla> 
+
+@{
+    ViewData["Title"] = "Cálculo de Planilla";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-info" id="mensajeFiltro" style="display: none;">
+    <strong>Información:</strong> No existen datos para calcular la planilla en el periodo seleccionado.
+</div>
+
+<!-- Filtro de Periodo (Mes y Año) -->
+<form method="get" action="@Url.Action("Index", "ControladorPlanilla")" class="row g-3 mb-3">
+    <div class="col-md-3">
+        <label for="mes">Mes</label>
+        <select id="mes" name="mes" class="form-select">
+            @for (int m = 1; m <= 12; m++)
+            {
+                string nombreMes = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m);
+                bool esSeleccionado = (m == ViewBag.MesActual);
+                if (esSeleccionado)
+                {
+                    <option value="@m" selected>@nombreMes</option>
+                }
+                else
+                {
+                    <option value="@m">@nombreMes</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label for="anno">Año</label>
+        <select id="anno" name="anno" class="form-select">
+            @for (int y = DateTime.Now.Year - 5; y <= DateTime.Now.Year + 1; y++)
+            {
+                bool esSeleccionado = (y == ViewBag.AnnoActual);
+                if (esSeleccionado)
+                {
+                    <option value="@y" selected>@y</option>
+                }
+                else
+                {
+                    <option value="@y">@y</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </div>
+</form>
+
+
+
+<!-- Tabla de Planilla Calculada -->
+@if (Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Funcionario</th>
+                <th>Salario Base</th>
+                <th>Salario Bruto</th>
+                <th>Aporte Pensión Complementaria</th>
+                <th>Cargas Sociales</th>
+                <th>Créditos Fiscales</th>
+                <th>Impuesto Renta</th>
+                <th>Salario Neto</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NombreCompleto</td>
+                    <td>@item.SalarioBaseMensual.ToString("N2")</td>
+                    <td>@item.SalarioBruto.ToString("N2")</td>
+                    <td>@item.AportePensionComplementaria.ToString("N2")</td>
+                    <td>@item.TotalCargasSociales.ToString("N2")</td>
+                    <td>@item.TotalCreditosFiscales.ToString("N2")</td>
+                    <td>@item.ImpuestoRenta.ToString("N2")</td>
+                    <td>@item.SalarioNeto.ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay datos para mostrar en este periodo.</p>
+}
+
+<script>
+    $(document).ready(function () {
+        // Mostrar mensaje si no hay datos
+        if (@Model.Count == 0) {
+            $("#mensajeFiltro").show();
+        } else {
+            $("#mensajeFiltro").hide();
+        }
+    });
+</script>

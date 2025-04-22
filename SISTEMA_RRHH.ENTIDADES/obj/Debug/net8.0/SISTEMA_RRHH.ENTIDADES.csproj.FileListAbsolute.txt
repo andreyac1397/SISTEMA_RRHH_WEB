@@ -1,0 +1,11 @@
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\bin\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.deps.json
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\bin\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\bin\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.pdb
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.AssemblyInfoInputs.cache
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.AssemblyInfo.cs
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.csproj.CoreCompileInputs.cache
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\refint\SISTEMA_RRHH.ENTIDADES.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.pdb
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.ENTIDADES\obj\Debug\net8.0\ref\SISTEMA_RRHH.ENTIDADES.dll

@@ -1,0 +1,465 @@
+﻿ @model SISTEMA_RRHH.UI.Models.FuncionarioViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Gestión de Funcionarios";
+    var errorEnAgregar = TempData["Error"] != null && TempData["Origen"]?.ToString() == "Agregar";
+    var errorEnModificar = TempData["Error"] != null && TempData["Origen"]?.ToString() == "Modificar";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2 class="fw-semibold mb-3" style="font-size: 1.8rem; color: #0d6efd; letter-spacing: 1px;">
+                <i class="fas fa-users-cog me-2"></i> Gestión de Funcionarios
+            </h2>
+
+
+        </div>
+        <div class="col-md-4 text-end">
+            <button class="btn btn-success btn-lg px-4" data-bs-toggle="modal" data-bs-target="#agregarModal">
+                <i class="fas fa-user-plus"></i> Agregar Funcionario
+            </button>
+        </div>
+    </div>
+
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["Mensaje"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger text-center">@TempData["Error"]</div>
+    }
+
+   <div class="table-responsive border rounded shadow-sm p-3 bg-white">
+    <table class="table table-bordered table-hover table-striped align-middle text-center">
+        <thead class="bg-primary text-white text-center text-nowrap" style="font-size: 0.85rem;">
+            <tr>
+                <th style="min-width: 40px;">ID</th>
+                <th style="min-width: 110px;">Identificación</th>
+                <th style="min-width: 100px;">Nombre</th>
+                <th style="min-width: 110px;">Primer Apellido</th>
+                <th style="min-width: 120px;">Segundo Apellido</th>
+                <th style="min-width: 110px;">Fecha Nac.</th>
+                <th style="min-width: 110px;">Fecha Ingreso</th>
+                <th style="min-width: 80px;">Hijos Mayores</th>
+                <th style="min-width: 100px;">Hijos Aplicables</th>
+                <th style="min-width: 110px;">Estado Civil</th>
+                <th style="min-width: 100px;">Salario</th>
+                <th style="min-width: 110px;">Tipo Empleado</th>
+                <th style="min-width: 130px;">Estado Funcionario</th>
+                <th style="min-width: 110px;">Departamento</th>
+                <th style="min-width: 130px;">Aporte Pensión</th>
+                <th style="min-width: 160px;">Correo Electrónico</th>
+                <th style="min-width: 100px;">Nacionalidad</th>
+                <th style="min-width: 70px;">Sexo</th>
+                <th style="min-width: 120px;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody style="font-size: 0.9rem; font-family: 'Segoe UI', sans-serif; color: #333;">
+
+            @foreach (var f in ViewBag.FuncionariosConDescripcion as List<SISTEMA_RRHH.ENTIDADES.DTO.FuncionarioVista>)
+            {
+                <tr>
+                    <td>@f.FuncionarioID</td>
+                    <td>@f.NumeroIdentificacion</td>
+                    <td>@f.Nombre</td>
+                    <td>@f.PrimerApellido</td>
+                    <td>@f.SegundoApellido</td>
+                    <td>@f.FechaNacimiento.ToShortDateString()</td>
+                    <td>@f.FechaIngreso.ToShortDateString()</td>
+                    <td>@f.CantidadHijosMayores</td>
+                    <td>@f.CantidadHijosAplicables</td>
+                    <td>@f.EstadoCivilDescripcion</td>
+                    <td>@f.SalarioBaseMensual</td>
+                    <td>@f.TipoEmpleadoDescripcion</td>
+                    <td>@f.EstadoFuncionarioDescripcion</td>
+                    <td>@f.DepartamentoDescripcion</td>
+                    <td>@f.AportePensionComplementaria</td>
+                    <td>@f.CorreoElectronico</td>
+                    <td>@f.Nacionalidad</td>
+                    <td>@f.Sexo</td>
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <button class="btn btn-outline-primary btn-sm px-3 d-flex align-items-center"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editarModal"
+                                    data-funcionarioid="@f.FuncionarioID"
+                                    data-numeroidentificacion="@f.NumeroIdentificacion"
+                                    data-nombre="@f.Nombre"
+                                    data-primerapellido="@f.PrimerApellido"
+                                    data-segundoapellido="@f.SegundoApellido"
+                                    data-fechanacimiento="@f.FechaNacimiento.ToString("yyyy-MM-dd")"
+                                    data-fechaingreso="@f.FechaIngreso.ToString("yyyy-MM-dd")"
+                                    data-cantidadhijosmayores="@f.CantidadHijosMayores"
+                                    data-cantidadhijosaplicables="@f.CantidadHijosAplicables"
+                                    data-estadocivilid="@f.EstadoCivilID"
+                                    data-salariobase="@f.SalarioBaseMensual"
+                                    data-tipoempleado="@f.TipoEmpleadoID"
+                                    data-estadofuncionario="@f.EstadoFuncionarioID"
+                                    data-departamento="@f.DepartamentoID"
+                                    data-aporte="@f.AportePensionComplementaria"
+                                    data-correo="@f.CorreoElectronico"
+                                    data-nacionalidad="@f.Nacionalidad"
+                                    data-sexo="@f.Sexo">
+                                <i class="fas fa-edit me-1"></i> Editar
+                            </button>
+                            <button type="button"
+                                    class="btn btn-outline-danger btn-sm px-3 d-flex align-items-center"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmarEliminarModal"
+                                    data-id="@f.FuncionarioID"
+                                    data-nombre="@f.Nombre @f.PrimerApellido">
+                                <i class="fas fa-trash me-1"></i> Eliminar
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </>
+    </table>
+</div>
+
+
+
+
+<!-- Modal AGREGAR Funcionario -->
+<!-- Modal AGREGAR Funcionario -->
+<div class="modal fade @(errorEnAgregar ? "show" : "")" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="@(errorEnAgregar ? "false" : "true")" style="@(errorEnAgregar ? "display: block;" : "")">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="@Url.Action("Agregar", "ControladorFuncionarios")">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarModalLabel">Agregar Funcionario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    @if (errorEnAgregar)
+                    {
+                        <div class="alert alert-danger small">@TempData["Error"]</div>
+                    }
+
+                    <div class="mb-2">
+                        <label>Número de Identificación</label>
+                        <input class="form-control" name="NumeroIdentificacion" required value="@Model.Funcionario.NumeroIdentificacion" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Nombre</label>
+                        <input class="form-control" name="Nombre" required value="@Model.Funcionario.Nombre" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Primer Apellido</label>
+                        <input class="form-control" name="PrimerApellido" required value="@Model.Funcionario.PrimerApellido" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Segundo Apellido</label>
+                        <input class="form-control" name="SegundoApellido" value="@Model.Funcionario.SegundoApellido" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Fecha Nacimiento</label>
+                        <input class="form-control" type="date" name="FechaNacimiento" required value="@Model.Funcionario.FechaNacimiento.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Fecha Ingreso</label>
+                        <input class="form-control" type="date" name="FechaIngreso" required value="@Model.Funcionario.FechaIngreso.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Cantidad Hijos Mayores</label>
+                        <input class="form-control" type="number" name="CantidadHijosMayores" required value="@Model.Funcionario.CantidadHijosMayores" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Cantidad Hijos Aplicables</label>
+                        <input class="form-control" type="number" name="CantidadHijosAplicables" required value="@Model.Funcionario.CantidadHijosAplicables" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Estado Civil</label>
+                        <select class="form-select" name="EstadoCivilID">
+                            @foreach (var item in Model.ListaEstadosCiviles)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label>Salario Base</label>
+                        <input class="form-control" type="number" step="0.01" name="SalarioBaseMensual" required value="@Model.Funcionario.SalarioBaseMensual" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Tipo Empleado</label>
+                        <select class="form-select" name="TipoEmpleado">
+                            @foreach (var item in Model.ListaTiposEmpleados)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label>Estado Funcionario</label>
+                        <select class="form-select" name="EstadoFuncionario">
+                            @foreach (var item in Model.ListaEstadosFuncionario)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label>Departamento</label>
+                        <select class="form-select" name="Departamento">
+                            @foreach (var item in Model.ListaDepartamentos)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label>Aporte Pensión Complementaria</label>
+                        <input class="form-control" type="number" step="0.01" name="AportePensionComplementaria" value="@Model.Funcionario.AportePensionComplementaria" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Correo Electrónico</label>
+                        <input class="form-control" type="email" name="CorreoElectronico" value="@Model.Funcionario.CorreoElectronico" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Nacionalidad</label>
+                        <input class="form-control" name="Nacionalidad" required value="@Model.Funcionario.Nacionalidad" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Sexo</label>
+                        <input class="form-control" name="Sexo" required value="@Model.Funcionario.Sexo" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" type="submit">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal EDITAR -->
+<!-- Modal EDITAR -->
+<div class="modal fade @(errorEnModificar ? "show" : "")" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="@(errorEnModificar ? "false" : "true")" style="@(errorEnModificar ? "display: block;" : "")">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="@Url.Action("Modificar", "ControladorFuncionarios")">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarModalLabel">Editar Funcionario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    @if (errorEnModificar)
+                    {
+                        <div class="alert alert-danger small">@TempData["Error"]</div>
+                    }
+
+                    <!-- ID Funcionario editable -->
+                    <div class="mb-2">
+                        <label>ID Funcionario</label>
+                        <input class="form-control" name="FuncionarioID" id="editFuncionarioID" value="@Model.Funcionario.FuncionarioID" readonly />
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Número de Identificación</label>
+                        <input class="form-control" name="NumeroIdentificacion" id="editNumeroIdentificacion" value="@Model.Funcionario.NumeroIdentificacion" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Nombre</label>
+                        <input class="form-control" name="Nombre" id="editNombre" value="@Model.Funcionario.Nombre" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Primer Apellido</label>
+                        <input class="form-control" name="PrimerApellido" id="editPrimerApellido" value="@Model.Funcionario.PrimerApellido" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Segundo Apellido</label>
+                        <input class="form-control" name="SegundoApellido" id="editSegundoApellido" value="@Model.Funcionario.SegundoApellido" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Fecha Nacimiento</label>
+                        <input class="form-control" type="date" name="FechaNacimiento" id="editFechaNacimiento" value="@Model.Funcionario.FechaNacimiento.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Fecha Ingreso</label>
+                        <input class="form-control" type="date" name="FechaIngreso" id="editFechaIngreso" value="@Model.Funcionario.FechaIngreso.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Cantidad Hijos Mayores</label>
+                        <input class="form-control" type="number" name="CantidadHijosMayores" id="editCantidadHijosMayores" value="@Model.Funcionario.CantidadHijosMayores" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Cantidad Hijos Aplicables</label>
+                        <input class="form-control" type="number" name="CantidadHijosAplicables" id="editCantidadHijosAplicables" value="@Model.Funcionario.CantidadHijosAplicables" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Estado Civil</label>
+                        <select class="form-select" name="EstadoCivilID" id="editEstadoCivilID">
+                            @{
+                                var estadoSeleccionado = Model.Funcionario.EstadoCivilID.ToString();
+                                foreach (var item in Model.ListaEstadosCiviles)
+                                {
+                                     var selected = item.Value == estadoSeleccionado ? "selected" : "";
+                                      @:<option value="@item.Value" @Html.Raw(selected)>@item.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Salario Base</label>
+                        <input class="form-control" type="number" step="0.01" name="SalarioBaseMensual" id="editSalarioBaseMensual" value="@Model.Funcionario.SalarioBaseMensual" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Tipo Empleado</label>
+                        <select class="form-select" name="TipoEmpleado" id="editTipoEmpleado">
+                            @{
+                                var tipoSeleccionado = Model.Funcionario.TipoEmpleado;
+                                foreach (var item in Model.ListaTiposEmpleados)
+                                {
+                                     var selected = item.Value == tipoSeleccionado ? "selected" : "";
+                                     @:<option value="@item.Value" @Html.Raw(selected)>@item.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Estado Funcionario</label>
+                        <select class="form-select" name="EstadoFuncionario" id="editEstadoFuncionario">
+                            @{
+                                var estadoFunSeleccionado = Model.Funcionario.EstadoFuncionario;
+                                foreach (var item in Model.ListaEstadosFuncionario)
+                                {
+                                    var selected = item.Value == estadoFunSeleccionado ? "selected" : "";
+                                    @:<option value="@item.Value" @Html.Raw(selected)>@item.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Departamento</label>
+                        <select class="form-select" name="Departamento" id="editDepartamento">
+                            @{
+                                var deptoSeleccionado = Model.Funcionario.Departamento;
+                                foreach (var item in Model.ListaDepartamentos)
+                                {
+                                    var selected = item.Value == deptoSeleccionado ? "selected" : "";
+                                    @:<option value="@item.Value" @Html.Raw(selected)>@item.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Aporte Pensión Complementaria</label>
+                        <input class="form-control" type="number" step="0.01" name="AportePensionComplementaria" id="editAportePension" value="@Model.Funcionario.AportePensionComplementaria" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Correo Electrónico</label>
+                        <input class="form-control" name="CorreoElectronico" id="editCorreoElectronico" value="@Model.Funcionario.CorreoElectronico" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Nacionalidad</label>
+                        <input class="form-control" name="Nacionalidad" id="editNacionalidad" value="@Model.Funcionario.Nacionalidad" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Sexo</label>
+                        <input class="form-control" name="Sexo" id="editSexo" value="@Model.Funcionario.Sexo" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+                
+
+<!-- Modal de Confirmación de Eliminación -->
+<div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-labelledby="confirmarEliminarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="confirmarEliminarModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar al funcionario <strong id="nombreFuncionarioEliminar"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="@Url.Action("Eliminar", "ControladorFuncionarios")">
+                    <input type="hidden" name="funcionarioID" id="funcionarioIDEliminar" />
+                    <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // SCRIPT PARA EL MODAL DE EDITAR
+        var editarModal = document.getElementById('editarModal');
+        editarModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+
+            document.getElementById('editFuncionarioID').value = button.getAttribute('data-funcionarioid');
+            document.getElementById('editNumeroIdentificacion').value = button.getAttribute('data-numeroidentificacion');
+            document.getElementById('editNombre').value = button.getAttribute('data-nombre');
+            document.getElementById('editPrimerApellido').value = button.getAttribute('data-primerapellido');
+            document.getElementById('editSegundoApellido').value = button.getAttribute('data-segundoapellido');
+            document.getElementById('editFechaNacimiento').value = button.getAttribute('data-fechanacimiento');
+            document.getElementById('editFechaIngreso').value = button.getAttribute('data-fechaingreso');
+            document.getElementById('editCantidadHijosMayores').value = button.getAttribute('data-cantidadhijosmayores');
+            document.getElementById('editCantidadHijosAplicables').value = button.getAttribute('data-cantidadhijosaplicables');
+            document.getElementById('editCorreoElectronico').value = button.getAttribute('data-correo');
+            document.getElementById('editNacionalidad').value = button.getAttribute('data-nacionalidad');
+            document.getElementById('editSexo').value = button.getAttribute('data-sexo');
+            document.getElementById('editEstadoCivilID').value = button.getAttribute('data-estadocivilid');
+            document.getElementById('editTipoEmpleado').value = button.getAttribute('data-tipoempleado');
+            document.getElementById('editEstadoFuncionario').value = button.getAttribute('data-estadofuncionario');
+            document.getElementById('editDepartamento').value = button.getAttribute('data-departamento');
+            document.getElementById('editSalarioBaseMensual').value = parseFloat(button.getAttribute('data-salariobase')) || 0;
+            document.getElementById('editAportePension').value = parseFloat(button.getAttribute('data-aporte')) || 0;
+        });
+                   $(document).ready(function () {
+            var errorOrigen = '@TempData["Origen"]';
+            if (errorOrigen === 'Agregar') {
+                var agregarModal = new bootstrap.Modal(document.getElementById('agregarModal'));
+                agregarModal.show();
+            }
+            if (errorOrigen === 'Modificar') {
+                var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
+                editarModal.show();
+            }
+        });
+
+        // SCRIPT PARA EL MODAL DE CONFIRMACIÓN DE ELIMINACIÓN
+         var confirmarEliminarModal = document.getElementById('confirmarEliminarModal');
+         confirmarEliminarModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var idFuncionario = button.getAttribute('data-id');      // <-- Este es FuncionarioID
+            var nombreCompleto = button.getAttribute('data-nombre');
+
+            // Ponemos ese ID en el hidden input
+            document.getElementById('funcionarioIDEliminar').value = idFuncionario;
+
+            // Mostramos el nombre en la pregunta
+            document.getElementById('nombreFuncionarioEliminar').textContent = nombreCompleto;
+        });
+    </script>
+}
+
+

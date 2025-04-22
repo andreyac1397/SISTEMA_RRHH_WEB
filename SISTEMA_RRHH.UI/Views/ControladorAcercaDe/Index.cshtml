@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Acerca del Sistema";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded p-4">
+        <h2 class="mb-4 text-primary">
+            <i class="fa-solid fa-circle-info me-1"></i> Acerca del Sistema
+        </h2>
+
+        <!-- Contenedor flex con texto y logo -->
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Texto -->
+            <div style="flex: 1;">
+                @if (!string.IsNullOrEmpty(ViewBag.Contenido))
+                {
+                    <pre style="white-space: pre-wrap; font-family: 'Segoe UI', sans-serif; font-size: 20px;">
+                        @ViewBag.Contenido
+                </pre>
+                }
+                else
+                {
+                    <div class="alert alert-warning" role="alert">
+                        ⚠️ No se encontró información para mostrar.
+                    </div>
+                }
+            </div>
+
+            <!-- Logo más cercano al texto -->
+            <div style="margin-left: 5px;">
+                <img src="~/imagenes/CUClogo2.png" alt="Logo del CUC"
+                     style="height: 220px; object-fit: contain;" />
+            </div>
+        </div>
+
+

@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Cambiar Contraseña";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool esCambioObligatorio = ViewBag.EsCambioObligatorio != null && (bool)ViewBag.EsCambioObligatorio;
+
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center mb-4">Cambiar Contraseña</h2>
+
+    <div class="alert alert-warning text-center">
+        <strong>¡Atención!</strong>
+        Debés cambiar tu contraseña y validar la actual para mayor seguridad.
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @ViewBag.Error
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Mensaje"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    }
+
+
+    <form method="post" asp-action="CambiarContrasena" asp-controller="ControladorLogin">
+
+        
+            <div class="mb-3">
+                <label class="form-label">Correo Electrónico</label>
+                <input type="email"
+                       class="form-control"
+                       name="correo"
+                       required
+                       placeholder="Tu correo registrado" />
+            </div>
+        
+
+        <div class="mb-3">
+            <label class="form-label">Contraseña Actual</label>
+            <input type="password"
+                   class="form-control"
+                   name="contrasenaActual"
+                   required
+                   placeholder="Introduce tu contraseña actual" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nueva Contraseña</label>
+            <input type="password"
+                   class="form-control"
+                   name="nuevaContrasena"
+                   required
+                   pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$"
+                   title="Debe tener entre 8 y 16 caracteres, al menos una mayúscula, una minúscula, un número y un símbolo." />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Confirmar Contraseña</label>
+            <input type="password"
+                   class="form-control"
+                   name="confirmarContrasena"
+                   required
+                   placeholder="Repite tu nueva contraseña" />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Guardar Contraseña</button>
+
+        @if (!esCambioObligatorio)
+        {
+            <div class="text-center mt-3">
+                <a href="@Url.Action("Ingresar", "ControladorLogin")">Volver al inicio de sesión</a>
+            </div>
+        }
+
+    </form>
+</div>

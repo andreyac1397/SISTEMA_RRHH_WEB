@@ -1,0 +1,904 @@
+﻿@model SISTEMA_RRHH.UI.Models.MantenimientoViewModel
+@using System.Globalization
+
+@{
+    ViewBag.Title = "Centro de Mantenimiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Centro de Mantenimiento</h2>
+
+<!-- Mensajes de notificación -->
+@if (TempData["MensajeCargas"] != null)
+{
+    <div class="alert alert-success">@TempData["MensajeCargas"]</div>
+}
+@if (TempData["ErrorCargas"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorCargas"]</div>
+}
+@if (TempData["MensajeCreditos"] != null)
+{
+    <div class="alert alert-success">@TempData["MensajeCreditos"]</div>
+}
+@if (TempData["ErrorCreditos"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorCreditos"]</div>
+}
+@if (TempData["MensajeHoras"] != null)
+{
+    <div class="alert alert-success">@TempData["MensajeHoras"]</div>
+}
+@if (TempData["ErrorHoras"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorHoras"]</div>
+}
+@if (TempData["MensajeTractos"] != null)
+{
+    <div class="alert alert-success">@TempData["MensajeTractos"]</div>
+}
+@if (TempData["ErrorTractos"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorTractos"]</div>
+}
+
+<!-- Pestañas de navegación usando Bootstrap 5 -->
+<ul class="nav nav-tabs fw-bold" id="mantenimientoTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="cargas-tab" data-bs-toggle="tab" data-bs-target="#cargas" type="button" role="tab" aria-controls="cargas" aria-selected="true">
+            <i class="fas fa-balance-scale me-2"></i> Cargas Sociales
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="creditos-tab" data-bs-toggle="tab" data-bs-target="#creditos" type="button" role="tab" aria-controls="creditos" aria-selected="false">
+            <i class="fas fa-receipt me-2"></i> Créditos Fiscales
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tractos-tab" data-bs-toggle="tab" data-bs-target="#tractos" type="button" role="tab" aria-controls="tractos" aria-selected="false">
+            <i class="fas fa-percent me-2"></i> Tractos de Renta
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="horas-tab" data-bs-toggle="tab" data-bs-target="#horas" type="button" role="tab" aria-controls="horas" aria-selected="false">
+            <i class="fas fa-clock me-2"></i> Horas Laboradas
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab" aria-controls="usuarios" aria-selected="false">
+            <i class="fas fa-users me-2"></i> Usuarios
+        </button>
+    </li>
+</ul>
+
+
+<div class="tab-content mt-3" id="mantenimientoTabsContent">
+
+    <!-- =========================================
+      PESTAÑA: CARGAS SOCIALES
+    ========================================= -->
+    <div class="tab-pane fade show active" id="cargas" role="tabpanel" aria-labelledby="cargas-tab">
+        <h3>Cargas Sociales</h3>
+
+        <!-- BOTÓN AGREGAR -->
+        <div class="mb-2 text-end">
+            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#agregarCargaModal">
+                Agregar Carga Social
+            </button>
+        </div>
+
+        <!-- TABLA MODERNIZADA -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered align-middle">
+                <thead class="bg-info text-white text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>Concepto</th>
+                        <th>% Patrono</th>
+                        <th>% Trabajador</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var carga in Model.CargasSociales)
+                    {
+                        <tr>
+                            <td>@carga.CargaSocialID</td>
+                            <td>@carga.Concepto</td>
+                            <td>@carga.PorcentajePatrono.ToString("0.##", CultureInfo.InvariantCulture)</td>
+                            <td>@carga.PorcentajeTrabajador.ToString("0.##", CultureInfo.InvariantCulture)</td>
+                            <td style="min-width:120px">
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-warning btn-sm px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editarCargaModal"
+                                            data-id="@carga.CargaSocialID"
+                                            data-concepto="@carga.Concepto"
+                                            data-patrono="@carga.PorcentajePatrono.ToString("F2", CultureInfo.InvariantCulture)"
+                                            data-trabajador="@carga.PorcentajeTrabajador.ToString("F2", CultureInfo.InvariantCulture)">
+                                        Modificar
+                                    </button>
+                                    <button class="btn btn-danger btn-sm px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirmarEliminarModal"
+                                            data-action="@Url.Action("EliminarCargaSocial", "ControladorMantenimientoImpuestos")"
+                                            data-id="@carga.CargaSocialID"
+                                            data-nombre="@carga.Concepto">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- MODAL AGREGAR CARGA -->
+    <div class="modal fade" id="agregarCargaModal" tabindex="-1" aria-labelledby="agregarCargaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarCargaSocial", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Agregar Carga Social</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Concepto</label>
+                        <input type="text" name="Concepto" class="form-control" required />
+
+                        <label>% Patrono</label>
+                        <input type="number" step="0.01" name="PorcentajePatrono" class="form-control decimal" required />
+
+                        <label>% Trabajador</label>
+                        <input type="number" step="0.01" name="PorcentajeTrabajador" class="form-control decimal" required />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MODIFICAR CARGA -->
+    <div class="modal fade" id="editarCargaModal" tabindex="-1" aria-labelledby="editarCargaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarCargaSocial", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Carga Social</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.Hidden("CargaSocialID", null, new { id = "editCargaID" })
+
+                        <label>Concepto</label>
+                        <input type="text" name="Concepto" id="editConcepto" class="form-control" required />
+
+                        <label>% Patrono</label>
+                        <input type="number" step="0.01" name="PorcentajePatrono" id="editPatrono" class="form-control" required />
+
+                        <label>% Trabajador</label>
+                        <input type="number" step="0.01" name="PorcentajeTrabajador" id="editTrabajador" class="form-control" required />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =========================================
+      PESTAÑA: CRÉDITOS FISCALES
+    ========================================= -->
+    <div class="tab-pane fade" id="creditos" role="tabpanel" aria-labelledby="creditos-tab">
+        <h3>Créditos Fiscales</h3>
+
+        <!-- BOTÓN AGREGAR -->
+        <div class="mb-2 text-end">
+            <button type="button"
+                    class="btn btn-success btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#agregarCreditoModal">
+                Agregar Crédito
+            </button>
+        </div>
+
+        <!-- TABLA DE CRÉDITOS -->
+        <table class="table table-hover table-striped table-bordered align-middle">
+            <thead>
+                <tr class="bg-info text-white">
+                    <th class="text-center">ID</th>
+                    <th>Tipo</th>
+                    <th class="text-end">Monto</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var credito in Model.CreditosFiscales)
+                {
+                    <tr>
+                        <td class="text-center">@credito.CreditoFiscalID</td>
+                        <td>@credito.Tipo</td>
+                        <td class="text-end">@credito.Monto.ToString("N2")</td>
+                        <td class="text-center">
+                            <!-- BOTÓN MODIFICAR -->
+                            <button type="button"
+                                    class="btn btn-warning btn-sm me-1"
+                                    style="min-width:80px"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editarCreditoModal"
+                                    data-id="@credito.CreditoFiscalID"
+                                    data-tipo="@credito.Tipo"
+                                    data-monto="@credito.Monto.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)">
+                                Modificar
+                            </button>
+
+                            <!-- BOTÓN ELIMINAR -->
+                            <button type="button"
+                                    class="btn btn-danger btn-sm"
+                                    style="min-width:80px"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmarEliminarModal"
+                                    data-action="@Url.Action("EliminarCreditoFiscal", "ControladorMantenimientoImpuestos")"
+                                    data-id="@credito.CreditoFiscalID"
+                                    data-nombre="@credito.Tipo">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- MODAL AGREGAR CRÉDITO -->
+    <div class="modal fade" id="agregarCreditoModal" tabindex="-1" aria-labelledby="agregarCreditoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarCreditoFiscal", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Agregar Crédito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Tipo</label>
+                        <input type="text" name="Tipo" class="form-control" required />
+
+                        <label>Monto</label>
+                        <input type="number" step="0.01" name="Monto" class="form-control" required />
+                        
+                        <input type="hidden" name="PeriodoMes" value="@ViewBag.MesActual" />
+                        <input type="hidden" name="PeriodoAnno" value="@ViewBag.AnnoActual" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MODIFICAR CRÉDITO -->
+    <div class="modal fade" id="editarCreditoModal" tabindex="-1" aria-labelledby="editarCreditoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarCreditoFiscal", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Crédito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.Hidden("CreditoFiscalID", null, new { id = "editCreditoID" })
+
+                        <label>Tipo</label>
+                        <input type="text" name="Tipo" id="editTipo" class="form-control" required />
+
+                        <label>Monto</label>
+                        <input type="number" step="0.01" name="Monto" id="editMonto" class="form-control" required />
+                        
+                        <input type="hidden" name="PeriodoMes" value="@ViewBag.MesActual" />
+                        <input type="hidden" name="PeriodoAnno" value="@ViewBag.AnnoActual" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PESTAÑA: HORAS LABORADAS -->
+    <div class="tab-pane fade" id="horas" role="tabpanel" aria-labelledby="horas-tab">
+        <h3>Horas Laboradas</h3>
+
+        @* Mensaje de edición de periodo *@
+        @if (ViewBag.MensajeEdicion != null)
+        {
+            <div class="alert alert-info">
+                @ViewBag.MensajeEdicion
+            </div>
+        }
+
+        @* Filtro de periodo *@
+        <form method="get" asp-action="Indice" asp-controller="ControladorMantenimientoImpuestos" class="row g-2 mb-3">
+            <div class="col-md-2">
+                <label for="mes">Mes</label>
+                <select id="mes" name="mes" class="form-select">
+                    @for (int m = 1; m <= 12; m++)
+                    {
+                        var mesNombre = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m);
+                        if (m == ViewBag.MesActual)
+                        {
+                            <option value="@m" selected>@mesNombre</option>
+                        }
+                        else
+                        {
+                            <option value="@m">@mesNombre</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="anno">Año</label>
+                <select id="anno" name="anno" class="form-select">
+                    @for (int y = DateTime.Now.Year - 5; y <= DateTime.Now.Year + 1; y++)
+                    {
+                        if (y == ViewBag.AnnoActual)
+                        {
+                            <option value="@y" selected>@y</option>
+                        }
+                        else
+                        {
+                            <option value="@y">@y</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+            </div>
+        </form>
+
+       
+
+        @* Tabla de horas con estilos igual a usuarios *@
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered align-middle">
+                <thead class="bg-info text-white text-center">
+                    <tr>
+                        <th style="width: 5%;">ID</th>
+                        <th style="width: 20%;">Funcionario</th>
+                        <th style="width: 10%;">Normales</th>
+                        <th style="width: 10%;">Extras</th>
+                        <th style="width: 10%;">Dobles</th>
+                        <th style="width: 10%;">Salario Base</th>
+                        <th style="width: 10%;">Salario Bruto</th>
+                        <th style="width: 10%;">Mes</th>
+                        <th style="width: 5%;">Año</th>
+                        <th style="width: 10%;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var h in Model.HorasLaboradas)
+                    {
+                        <tr class="text-center">
+                            <td>@h.HorasLaboradasID</td>
+                            <td class="text-start">@h.NombreCompleto</td>
+                            <td>@h.HorasNormales</td>
+                            <td>@h.HorasExtras</td>
+                            <td>@h.HorasDobles</td>
+                            <td>@h.SalarioBase.ToString("N2")</td>
+                            <td>@h.SalarioBruto.ToString("N2")</td>
+                            <td>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(h.PeriodoMes)</td>
+                            <td>@h.PeriodoAnno</td>
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button class="btn btn-sm btn-warning px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editarHorasModal"
+                                            data-id="@h.HorasLaboradasID"
+                                            data-funcionario="@h.FuncionarioID"
+                                            data-nombrecompleto="@h.NombreCompleto"
+                                            data-normales="@h.HorasNormales"
+                                            data-extras="@h.HorasExtras"
+                                            data-dobles="@h.HorasDobles"
+                                            data-salariobase="@h.SalarioBase"
+                                            data-salariobruto="@h.SalarioBruto"
+                                            data-mes="@h.PeriodoMes"
+                                            data-anno="@h.PeriodoAnno">
+                                        Modificar
+                                    </button>
+                                    <button class="btn btn-sm btn-danger px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirmarEliminarModal"
+                                            data-action="@Url.Action("EliminarHorasLaboradas", "ControladorMantenimientoImpuestos")"
+                                            data-id="@h.HorasLaboradasID"
+                                            data-nombre="@h.HorasLaboradasID">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="editarHorasModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarHorasLaboradas", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header">
+                        <h5>Editar Horas</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.Hidden("HorasLaboradasID", null, new { id = "editHorasID" })
+                        @Html.Hidden("FuncionarioID", null, new { id = "editFuncionarioID" })
+
+                        <div class="mb-2">
+                            <label>Funcionario</label>
+                            <input type="text" class="form-control" id="editNombreFuncionario" disabled />
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Horas Normales</label>
+                            <input name="HorasNormales" class="form-control" id="editHorasNormales" required />
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Horas Extras</label>
+                            <input name="HorasExtras" class="form-control" id="editHorasExtras" required />
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Horas Dobles</label>
+                            <input name="HorasDobles" class="form-control" id="editHorasDobles" required />
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Mes</label>
+                            <select name="PeriodoMes" class="form-select" id="editPeriodoMes" required>
+                                @for (int m = 1; m <= 12; m++)
+                                {
+                                    <option value="@m">@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m)</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Año</label>
+                            <select name="PeriodoAnno" class="form-select" id="editPeriodoAnno" required>
+                                @for (int y = DateTime.Now.Year - 5; y <= DateTime.Now.Year + 1; y++)
+                                {
+                                    <option value="@y">@y</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
+     PESTAÑA: USUARIOS
+    ========================================= -->
+    <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+        <h3>Usuarios</h3>
+
+        @if (TempData["MensajeUsuarios"] != null)
+        {
+            <div class="alert alert-success">@TempData["MensajeUsuarios"]</div>
+        }
+        @if (TempData["ErrorUsuarios"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorUsuarios"]</div>
+        }
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered align-middle">
+                <thead class="bg-info text-white text-center">
+                    <tr>
+                        <th style="width: 5%;">ID</th>
+                        <th style="width: 20%;">Nombre Completo</th>
+                        <th style="width: 20%;">Correo Electrónico</th>
+                        <th style="width: 15%;">Contraseña</th>
+                        <th style="width: 15%;">Departamento</th>
+                        <th style="width: 10%;">Estado</th>
+                        <th style="width: 10%;">Cambiar Pass</th>
+                        <th style="width: 15%;">Acciones</th>
+                    </tr>
+                </>
+                <tbody>
+                    @foreach (var usuario in Model.ListaUsuarios)
+                    {
+                        <tr class="text-center">
+                            <td>@usuario.UsuarioID</td>
+                            <td class="text-start">@usuario.NombreCompleto</td>
+                            <td class="text-start">@usuario.CorreoElectronico</td>
+                            <td class="text-start">@usuario.Contrasena</td>
+                            <td>@usuario.NombreDepartamento</td>
+                            <td>@usuario.Estado</td>
+                            <td>@(usuario.DebeCambiarContrasena ? "Sí" : "No")</td>
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button class="btn btn-sm btn-warning px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editarUsuarioModal"
+                                            data-id="@usuario.UsuarioID"
+                                            data-nombre-completo="@usuario.NombreCompleto"
+                                            data-correo="@usuario.CorreoElectronico"
+                                            data-contrasena="@usuario.Contrasena"
+                                            data-departamento="@usuario.DepartamentoID"
+                                            data-estado="@usuario.EstadoFuncionarioID"
+                                            data-cambiar="@usuario.DebeCambiarContrasena">
+                                        Editar
+                                    </button>
+
+                                    <button class="btn btn-sm btn-danger px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirmarEliminarModal"
+                                            data-action="@Url.Action("EliminarUsuario", "ControladorMantenimientoImpuestos")"
+                                            data-id="@usuario.UsuarioID"
+                                            data-nombre="@usuario.NombreCompleto">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal editar -->
+    <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarUsuario", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Editar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.Hidden("UsuarioID", null, new { id = "editUsuarioID" })
+
+                        <label>Correo Electrónico</label>
+                        <input type="email" name="CorreoElectronico" id="editCorreo" class="form-control" required />
+                        
+                        <label>Contraseña</label>
+                        <input type="password" name="Contrasena" id="editContrasena" class="form-control" required />
+
+                        <label>Departamento</label>
+                        <select name="DepartamentoID" id="editDepartamento" class="form-select" required>
+                            <option value="1">Recursos Humanos</option>
+                            <option value="2">Contabilidad</option>
+                            <option value="3">Sistemas</option>
+                            <option value="4">Bodega</option>
+                            <option value="5">Producción</option>
+                        </select>
+
+                        <label>Estado</label>
+                        <select name="EstadoFuncionarioID" id="editEstado" class="form-select" required>
+                            <option value="1">Activo</option>
+                            <option value="2">Incapacitado</option>
+                            <option value="3">Suspendido</option>
+                            <option value="4">Despedido</option>
+                        </select>
+
+                        <label>¿Debe cambiar contraseña?</label>
+                        <select name="DebeCambiarContrasena" id="editCambiar" class="form-select" required>
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- =========================================
+      PESTAÑA: TRACTOS IMPUESTO DE RENTA
+    ========================================= -->
+    <div class="tab-pane fade" id="tractos" role="tabpanel" aria-labelledby="tractos-tab">
+        <h3>Tractos Impuesto de Renta</h3>
+
+        <!-- BOTÓN AGREGAR -->
+        <div class="mb-2 text-end">
+            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#agregarTractoModal">
+                Agregar Tracto
+            </button>
+        </div>
+
+        <!-- TABLA DE TRACTOS CON ESTILO UNIFICADO -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered align-middle">
+                <thead class="bg-info text-white text-center">
+                    <tr>
+                        <th style="width: 10%;">ID</th>
+                        <th style="width: 25%;">Salario Desde</th>
+                        <th style="width: 25%;">Salario Hasta</th>
+                        <th style="width: 20%;">% Aplicable</th>
+                        <th style="width: 20%;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var tracto in Model.TractosImpuestoRenta)
+                    {
+                        <tr class="text-center">
+                            <td>@tracto.TractoID</td>
+                            <td>@tracto.SalarioDesde.ToString("N2")</td>
+                            <td>@tracto.SalarioHasta.ToString("N2")</td>
+                            <td>@tracto.PorcentajeAplicable.ToString("N2")%</td>
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button type="button"
+                                            class="btn btn-warning btn-sm px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editarTractoModal"
+                                            data-tractoid="@tracto.TractoID"
+                                            data-salariodesde="@tracto.SalarioDesde.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)"
+                                            data-salariohasta="@tracto.SalarioHasta.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)"
+                                            data-porcentajeaplicable="@tracto.PorcentajeAplicable.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)">
+                                        Modificar
+                                    </button>
+
+                                    <button type="button"
+                                            class="btn btn-danger btn-sm px-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirmarEliminarModal"
+                                            data-action="@Url.Action("EliminarTractoImpuestoRenta", "ControladorMantenimientoImpuestos")"
+                                            data-id="@tracto.TractoID"
+                                            data-nombre="Tracto @tracto.TractoID">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MODAL AGREGAR TRACTO -->
+    <div class="modal fade" id="agregarTractoModal" tabindex="-1" aria-labelledby="agregarTractoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarTractoImpuestoRenta", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Agregar Tracto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Salario Desde</label>
+                        <input type="number" step="0.01" name="SalarioDesde" class="form-control" required />
+                        <label>Salario Hasta</label>
+                        <input type="number" step="0.01" name="SalarioHasta" class="form-control" required />
+                        <label>% Aplicable</label>
+                        <input type="number" step="0.01" name="PorcentajeAplicable" class="form-control" required />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MODIFICAR TRACTO -->
+    <div class="modal fade" id="editarTractoModal" tabindex="-1" aria-labelledby="editarTractoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("GuardarTractoImpuestoRenta", "ControladorMantenimientoImpuestos")">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Tracto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.Hidden("TractoID", null, new { id = "editTractoID" })
+
+                        <label>Salario Desde</label>
+                        <input type="number" step="0.01" name="SalarioDesde" id="editSalarioDesde" class="form-control" required />
+
+                        <label>Salario Hasta</label>
+                        <input type="number" step="0.01" name="SalarioHasta" id="editSalarioHasta" class="form-control" required />
+
+                        <label>% Aplicable</label>
+                        <input type="number" step="0.01" name="PorcentajeAplicable" id="editPorcentajeAplicable" class="form-control" required />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> <!-- fin .tab-content -->
+<!-- ========== Modal Genérico de CONFIRMACIÓN de Eliminación ========== -->
+<div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-labelledby="confirmarEliminarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="confirmarEliminarModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar el registro <strong id="nombreRegistroEliminar"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <!-- Form sin action fijo, se setea dinámicamente en el script -->
+                <form id="eliminarForm" method="post">
+                    <input type="hidden" name="id" id="registroEliminarId" />
+                    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- TOAST DE ERROR HORAS -->
+@if (TempData["ErrorHoras"] != null)
+{
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999">
+        <div id="toastErrorHoras" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @TempData["ErrorHoras"]
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Restaurar pestaña activa
+            const ultimaPestania = localStorage.getItem("ultimaPestaniaActiva");
+            if (ultimaPestania) {
+                const tabButton = document.querySelector(`button[data-bs-target="${ultimaPestania}"]`);
+                if (tabButton) {
+                    new bootstrap.Tab(tabButton).show();
+                }
+            }
+
+            // Guardar pestaña activa
+            document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tab => {
+                tab.addEventListener("shown.bs.tab", function (e) {
+                    localStorage.setItem("ultimaPestaniaActiva", e.target.getAttribute("data-bs-target"));
+                });
+            });
+
+            // Guardar pestaña antes de enviar formularios
+            document.querySelectorAll("form").forEach(form => {
+                form.addEventListener("submit", function () {
+                    const activa = document.querySelector('button.nav-link.active');
+                    if (activa) {
+                        localStorage.setItem("ultimaPestaniaActiva", activa.getAttribute("data-bs-target"));
+                    }
+                });
+            });
+
+            // ========== MODAL USUARIOS ==========
+            const editarUsuarioModal = document.getElementById('editarUsuarioModal');
+            if (editarUsuarioModal) {
+                editarUsuarioModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    document.getElementById('editUsuarioID').value = button.getAttribute('data-id');
+                    document.getElementById('editCorreo').value = button.getAttribute('data-correo');
+                    document.getElementById('editContrasena').value = button.getAttribute('data-contrasena');
+                    
+                });
+            }
+
+            // ========== MODAL HORAS ==========
+            const editarHorasModal = document.getElementById('editarHorasModal');
+            if (editarHorasModal) {
+                editarHorasModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    document.getElementById('editHorasID').value = button.getAttribute('data-id');
+                    document.getElementById('editFuncionarioID').value = button.getAttribute('data-funcionario');
+                    document.getElementById('editNombreFuncionario').value = button.getAttribute('data-nombrecompleto');
+                    document.getElementById('editHorasNormales').value = button.getAttribute('data-normales');
+                    document.getElementById('editHorasExtras').value = button.getAttribute('data-extras');
+                    document.getElementById('editHorasDobles').value = button.getAttribute('data-dobles');
+                    document.getElementById('editPeriodoMes').value = button.getAttribute('data-mes');
+                    document.getElementById('editPeriodoAnno').value = button.getAttribute('data-anno');
+                });
+            }
+
+            // ========== MODAL CARGAS ==========
+            const editarCargaModal = document.getElementById('editarCargaModal');
+            if (editarCargaModal) {
+                editarCargaModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    document.getElementById('editCargaID').value = button.getAttribute('data-id');
+                    document.getElementById('editConcepto').value = button.getAttribute('data-concepto');
+                    document.getElementById('editPatrono').value = button.getAttribute('data-patrono');
+                    document.getElementById('editTrabajador').value = button.getAttribute('data-trabajador');
+                });
+            }
+
+            // ========== MODAL CRÉDITOS ==========
+            const editarCreditoModal = document.getElementById('editarCreditoModal');
+            if (editarCreditoModal) {
+                editarCreditoModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    document.getElementById('editCreditoID').value = button.getAttribute('data-id');
+                    document.getElementById('editTipo').value = button.getAttribute('data-tipo');
+                    document.getElementById('editMonto').value = button.getAttribute('data-monto');
+                });
+            }
+
+            // ========== MODAL TRACTOS ==========
+            const editarTractoModal = document.getElementById('editarTractoModal');
+            if (editarTractoModal) {
+                editarTractoModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    document.getElementById('editTractoID').value = button.getAttribute('data-tractoid');
+                    document.getElementById('editSalarioDesde').value = button.getAttribute('data-salariodesde');
+                    document.getElementById('editSalarioHasta').value = button.getAttribute('data-salariohasta');
+                    document.getElementById('editPorcentajeAplicable').value = button.getAttribute('data-porcentajeaplicable');
+                });
+            }
+
+            // ========== MODAL ELIMINAR ==========
+            const confirmarEliminarModal = document.getElementById('confirmarEliminarModal');
+            if (confirmarEliminarModal) {
+                confirmarEliminarModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    document.getElementById('registroEliminarId').value = button.getAttribute('data-id');
+                    document.getElementById('nombreRegistroEliminar').textContent = button.getAttribute('data-nombre');
+                    document.getElementById('eliminarForm').action = button.getAttribute('data-action');
+                });
+            }
+
+            // ========== CAMBIAR COMA A PUNTO ==========
+            document.querySelectorAll(".decimal").forEach(el => {
+                el.addEventListener("input", function () {
+                    this.value = this.value.replace(/,/g, ".");
+                });
+            });
+        });
+    </script>
+}
+
+
+        

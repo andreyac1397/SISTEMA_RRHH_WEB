@@ -1,0 +1,16 @@
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\bin\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.deps.json
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\bin\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\bin\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.pdb
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\bin\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\bin\Debug\net8.0\SISTEMA_RRHH.ENTIDADES.pdb
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.csproj.AssemblyReference.cache
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.AssemblyInfoInputs.cache
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.AssemblyInfo.cs
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.csproj.CoreCompileInputs.cache
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_.2AB69E49.Up2Date
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\refint\SISTEMA_RRHH.DATOSSQL.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\SISTEMA_RRHH.DATOSSQL.pdb
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\obj\Debug\net8.0\ref\SISTEMA_RRHH.DATOSSQL.dll
+C:\Users\andre\source\repos\SISTEMA_RRHH_WEB\SISTEMA_RRHH.DATOSSQL\bin\Debug\net8.0\appsettings.datossql.json

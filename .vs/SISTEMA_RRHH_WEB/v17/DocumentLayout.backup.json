@@ -1,0 +1,337 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.negocio\\gestionplanilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|solutionrelative:sistema_rrhh.negocio\\gestionplanilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datossql\\appsettings.datossql.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|solutionrelative:sistema_rrhh.datossql\\appsettings.datossql.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F95C2E31-3D0A-4216-BC3F-B519A3F7CCE8}|SISTEMA_RRHH.DATOS\\SISTEMA_RRHH.DATOS.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datos\\usuariosdatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F95C2E31-3D0A-4216-BC3F-B519A3F7CCE8}|SISTEMA_RRHH.DATOS\\SISTEMA_RRHH.DATOS.csproj|solutionrelative:sistema_rrhh.datos\\usuariosdatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.negocio\\usuariosnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|solutionrelative:sistema_rrhh.negocio\\usuariosnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datossql\\usuariodatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|solutionrelative:sistema_rrhh.datossql\\usuariodatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.ui\\views\\controladormantenimientoimpuestos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|solutionrelative:sistema_rrhh.ui\\views\\controladormantenimientoimpuestos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.negocio\\gestionhoraslaboradas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|solutionrelative:sistema_rrhh.negocio\\gestionhoraslaboradas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.negocio\\gestiontractosimpuestorenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|solutionrelative:sistema_rrhh.negocio\\gestiontractosimpuestorenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datossql\\tractosimpuestorentadatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|solutionrelative:sistema_rrhh.datossql\\tractosimpuestorentadatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datossql\\sqlserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|solutionrelative:sistema_rrhh.datossql\\sqlserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.negocio\\gestioncreditosfiscales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|solutionrelative:sistema_rrhh.negocio\\gestioncreditosfiscales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.negocio\\gestionfuncionarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E43B05-9502-4D4A-829A-3F1115EA549D}|SISTEMA_RRHH.NEGOCIO\\SISTEMA_RRHH.NEGOCIO.csproj|solutionrelative:sistema_rrhh.negocio\\gestionfuncionarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datossql\\funcionariodatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|solutionrelative:sistema_rrhh.datossql\\funcionariodatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.ui\\controllers\\controladormantenimientoimpuestos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|solutionrelative:sistema_rrhh.ui\\controllers\\controladormantenimientoimpuestos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.ui\\controllers\\controladorfuncionarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|solutionrelative:sistema_rrhh.ui\\controllers\\controladorfuncionarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datossql\\creditosfiscalesdatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|solutionrelative:sistema_rrhh.datossql\\creditosfiscalesdatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.datossql\\cargassocialesdatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{824EDDC2-ED8E-4939-AC1B-E8E3BA40AACB}|SISTEMA_RRHH.DATOSSQL\\SISTEMA_RRHH.DATOSSQL.csproj|solutionrelative:sistema_rrhh.datossql\\cargassocialesdatossql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|solutionrelative:sistema_rrhh.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|c:\\users\\andre\\source\\repos\\sistema_rrhh_web\\sistema_rrhh.ui\\seguridad\\nocachefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6D918D-0E37-4122-9B34-92EE8F28E6BF}|SISTEMA_RRHH.UI\\SISTEMA_RRHH.UI.csproj|solutionrelative:sistema_rrhh.ui\\seguridad\\nocachefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GestionPlanilla.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionPlanilla.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.NEGOCIO\\GestionPlanilla.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionPlanilla.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.NEGOCIO\\GestionPlanilla.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T00:50:11.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuariosNegocio.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\UsuariosNegocio.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.NEGOCIO\\UsuariosNegocio.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\UsuariosNegocio.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.NEGOCIO\\UsuariosNegocio.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAtwEYAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T22:52:35.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Views\\ControladorMantenimientoImpuestos\\Index.cshtml",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.UI\\Views\\ControladorMantenimientoImpuestos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Views\\ControladorMantenimientoImpuestos\\Index.cshtml",
+              "RelativeToolTip": "SISTEMA_RRHH.UI\\Views\\ControladorMantenimientoImpuestos\\Index.cshtml",
+              "ViewState": "AgIAAMQBAAAAAAAAAAAAALgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T22:37:00.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GestionHorasLaboradas.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionHorasLaboradas.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.NEGOCIO\\GestionHorasLaboradas.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionHorasLaboradas.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.NEGOCIO\\GestionHorasLaboradas.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAmwFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T22:33:58.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsuarioDatosSQL.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\UsuarioDatosSQL.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOSSQL\\UsuarioDatosSQL.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\UsuarioDatosSQL.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOSSQL\\UsuarioDatosSQL.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAwwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T19:22:14.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuariosDatos.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOS\\UsuariosDatos.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOS\\UsuariosDatos.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOS\\UsuariosDatos.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOS\\UsuariosDatos.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T19:37:36.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.DatosSql.json",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\appsettings.DatosSql.json",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOSSQL\\appsettings.DatosSql.json",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\appsettings.DatosSql.json",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOSSQL\\appsettings.DatosSql.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-21T19:47:32.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GestionTractosImpuestoRenta.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionTractosImpuestoRenta.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.NEGOCIO\\GestionTractosImpuestoRenta.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionTractosImpuestoRenta.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.NEGOCIO\\GestionTractosImpuestoRenta.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T22:24:28.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TractosImpuestoRentaDatosSQL.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\TractosImpuestoRentaDatosSQL.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOSSQL\\TractosImpuestoRentaDatosSQL.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\TractosImpuestoRentaDatosSQL.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOSSQL\\TractosImpuestoRentaDatosSQL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T22:28:03.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FuncionarioDatosSQL.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\FuncionarioDatosSQL.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOSSQL\\FuncionarioDatosSQL.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\FuncionarioDatosSQL.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOSSQL\\FuncionarioDatosSQL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T22:12:13.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GestionCreditosFiscales.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionCreditosFiscales.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.NEGOCIO\\GestionCreditosFiscales.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionCreditosFiscales.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.NEGOCIO\\GestionCreditosFiscales.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T20:15:29.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GestionFuncionarios.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionFuncionarios.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.NEGOCIO\\GestionFuncionarios.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.NEGOCIO\\GestionFuncionarios.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.NEGOCIO\\GestionFuncionarios.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAQwGsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T20:05:33.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SQLServer.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\SQLServer.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOSSQL\\SQLServer.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\SQLServer.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOSSQL\\SQLServer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T19:21:07.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ControladorFuncionarios.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Controllers\\ControladorFuncionarios.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.UI\\Controllers\\ControladorFuncionarios.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Controllers\\ControladorFuncionarios.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.UI\\Controllers\\ControladorFuncionarios.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T20:11:38.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ControladorMantenimientoImpuestos.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Controllers\\ControladorMantenimientoImpuestos.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.UI\\Controllers\\ControladorMantenimientoImpuestos.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Controllers\\ControladorMantenimientoImpuestos.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.UI\\Controllers\\ControladorMantenimientoImpuestos.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T20:15:40.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CreditosFiscalesDatosSQL.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\CreditosFiscalesDatosSQL.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOSSQL\\CreditosFiscalesDatosSQL.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\CreditosFiscalesDatosSQL.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOSSQL\\CreditosFiscalesDatosSQL.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T19:47:38.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CargasSocialesDatosSQL.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\CargasSocialesDatosSQL.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.DATOSSQL\\CargasSocialesDatosSQL.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.DATOSSQL\\CargasSocialesDatosSQL.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.DATOSSQL\\CargasSocialesDatosSQL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T19:46:44.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NoCacheFilter.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Seguridad\\NoCacheFilter.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.UI\\Seguridad\\NoCacheFilter.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Seguridad\\NoCacheFilter.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.UI\\Seguridad\\NoCacheFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T18:39:45.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Program.cs",
+              "RelativeDocumentMoniker": "SISTEMA_RRHH.UI\\Program.cs",
+              "ToolTip": "C:\\Users\\andre\\source\\repos\\SISTEMA_RRHH_WEB\\SISTEMA_RRHH.UI\\Program.cs",
+              "RelativeToolTip": "SISTEMA_RRHH.UI\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAADEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T18:38:31.119Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
